@@ -1,0 +1,18 @@
+default: &default
+  adapter: oracle_enhanced
+  encoding: utf8
+  host: 192.168.33.40
+  port: 1521
+  database: xe
+  username: APPNAME
+  password: gameon1234
+  pool: 5
+
+development:
+  <<: *default
+
+test:
+  <<: *default
+
+production:
+  <<: *default

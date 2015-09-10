@@ -1,0 +1,19 @@
+default: &default
+  adapter: sqlserver
+  mode: dblib
+  dataserver: APPNAME
+  database: APPNAME_development
+  username: sa
+  password: gameon1234
+
+development:
+  <<: *default
+  database: APPNAME_development
+
+test:
+  <<: *default
+  database: APPNAME_test
+
+production:
+  <<: *default
+  database: APPNAME

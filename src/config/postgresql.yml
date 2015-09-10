@@ -1,0 +1,33 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  username: devnote
+  template: template1
+
+development:
+  <<: *default
+  database: APPNAME_development
+
+test:
+  <<: *default
+  database: APPNAME_test
+
+production:
+  <<: *default
+  database: APPNAME
+  username: devnote
+  password: devnote
+  host: 192.168.33.30
+  port: 9999
+  template: template1
+
+ora:
+  adapter: oracle_enhanced
+  encoding: utf8
+  host: 192.168.33.40
+  port: 1521
+  database: xe
+  username: scott
+  password: tiger
+  pool: 5
