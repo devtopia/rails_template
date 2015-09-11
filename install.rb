@@ -20,7 +20,7 @@ end
 @app_name = app_name
 
 # sources
-src_path = [File.expand_path(File.dirname(__FILE__)), '/src'].join
+# src_path = [File.expand_path(File.dirname(__FILE__)), '/src'].join
 
 # clean file
 run 'rm README.rdoc'
@@ -153,31 +153,31 @@ insert_into_file 'config/routes.rb', %(
 environment 'config.action_mailer.delivery_method = :letter_opener_web', env: 'development'
 
 # set env
-create_file 'config/application.yml', File.read("#{src_path}/config/application.yml")
+run 'wget https://raw.githubusercontent.com/park-jh/templates/master/src/config/application.yml'
 
 # set unicorn
 run 'mkdir -p config/unicorn'
-create_file 'config/unicorn/development.rb', File.read("#{src_path}/config/unicorn/development.rb")
-create_file 'config/unicorn/production.rb', File.read("#{src_path}/config/unicorn/production.rb")
+run 'wget https://raw.githubusercontent.com/park-jh/templates/master/src/config/unicorn/development.rb -P config/unicorn/'
+run 'wget https://raw.githubusercontent.com/park-jh/templates/master/src/config/unicorn/production.rb -P config/unicorn/'
 
 # set cache store
-initializer 'cache_store.rb', File.read("#{src_path}/config/initializers/cache_store.rb")
+run 'wget https://raw.githubusercontent.com/park-jh/templates/master/src/config/initializers/cache_store.rb -P config/initializers/'
 gsub_file 'config/initializers/cache_store.rb', /APPNAME/, @app_name
 
 # set japanese locale
-create_file 'config/locales/ja.yml', File.read("#{src_path}/config/locales/ja.yml" )
+run 'wget https://raw.githubusercontent.com/park-jh/templates/master/src/config/locales/ja.yml -P config/locales/'
 
 # set exception notification
-initializer 'exception_notification.rb', File.read("#{src_path}/config/initializers/exception_notification.rb")
+run 'wget https://raw.githubusercontent.com/park-jh/templates/master/src/config/initializers/exception_notification.rb -P config/initializers/'
 gsub_file 'config/initializers/exception_notification.rb', /APPNAME/, @app_name
 
 # set settingslogic
-create_file 'lib/settings.rb', File.read("#{src_path}/lib/settings.rb")
+run 'wget https://raw.githubusercontent.com/park-jh/templates/master/src/lib/settings.rb -P lib/'
 
 # set database
 db_name = ask('What is the database you are using? (postgresql/mysql/oracle/sqlserver)')
 remove_file 'config/database.yml'
-create_file 'config/database.yml', File.read("#{src_path}/config/" + "#{db_name}.yml")
+run "wget -O config/database.yml https://raw.githubusercontent.com/park-jh/templates/master/src/config/#{db_name}.yml"
 gsub_file 'config/database.yml', /APPNAME/, @app_name
 case db_name
 when 'oracle'
@@ -335,7 +335,7 @@ end
 generate 'rspec:install'
 run "echo '--color -f d' > .rspec"
 remove_file 'spec/rails_helper.rb'
-create_file 'spec/rails_helper.rb', File.read("#{src_path}/spec/rails_helper.rb")
+run 'wget https://raw.githubusercontent.com/park-jh/templates/master/src/spec/rails_helper.rb -P spec/'
 
 if @use_turbolinks
   # application.js(turbolink setting)
