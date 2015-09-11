@@ -153,7 +153,7 @@ insert_into_file 'config/routes.rb', %(
 environment 'config.action_mailer.delivery_method = :letter_opener_web', env: 'development'
 
 # set env
-run 'wget https://raw.githubusercontent.com/park-jh/templates/master/src/config/application.yml'
+run 'wget https://raw.githubusercontent.com/park-jh/templates/master/src/config/application.yml -P config/'
 
 # set unicorn
 run 'mkdir -p config/unicorn'
