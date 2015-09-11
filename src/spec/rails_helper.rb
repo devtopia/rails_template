@@ -7,8 +7,8 @@ require 'shoulda-matchers'
 require 'capybara'
 require 'capybara/rails'
 require 'capybara/rspec'
-require 'capybara/dsl'
 require 'capybara/poltergeist'
+require 'capybara/dsl'
 # Remote debugging
 # Capybara.register_driver :poltergeist_debug do |app|
 #   Capybara::Poltergeist::Driver.new(app, :inspector => true)

@@ -112,6 +112,7 @@ insert_into_file 'Gemfile', %(
   gem 'shoulda-matchers'
   # Test feature
   gem 'capybara'
+  gem 'poltergeist'
   # Deploy
   gem 'capistrano', '~> 3.2.1'
   gem 'capistrano-rails'
