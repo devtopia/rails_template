@@ -105,6 +105,10 @@ group :development, :test do
   gem 'database_rewinder'
   # Time Mock
   gem 'timecop'
+  # Shoulda matchers
+  gem 'shoulda-matchers'
+  # Test feature
+  gem 'capybara'
   # Deploy
   gem 'capistrano', '~> 3.2.1'
   gem 'capistrano-rails'
@@ -215,7 +219,7 @@ if @use_turbolinks
   insert_into_file 'Gemfile', %(
 # turbolinks support
 gem 'jquery-turbolinks'
-), before: 'group :development do'
+), before: 'group :development, :test do'
 end
 
 if @use_redis
@@ -278,7 +282,7 @@ if @use_slim
 gem 'slim'
 gem 'slim-rails'
 gem 'html2slim'
-), before: 'group :development do'
+), before: 'group :development, :test do'
 
   insert_into_file 'config/application.rb', %(
       g.template_engine :slim), after: 'config.generators do |g|'  
