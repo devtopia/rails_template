@@ -67,7 +67,9 @@ gem 'exception_notification'
 gem 'slack-notifier'
 # Decorator
 gem 'active_decorator'
-group :development do
+), before: 'group :development, :test do'
+
+insert_into_file 'Gemfile', %( 
   # A thin and fast web server
   gem 'thin'
   # Help to kill N+1 queries and unused eager loading
@@ -85,8 +87,9 @@ group :development do
   gem 'annotate'
   # Bower on Rails
   gem 'bower-rails'
-end
-group :development, :test do
+), after: 'group :development do'
+
+insert_into_file 'Gemfile', %(
   # Pry & extensions
   gem 'pry-rails'
   gem 'pry-coolline'
@@ -115,8 +118,7 @@ group :development, :test do
   gem 'capistrano-rbenv'
   gem 'capistrano-bundler'
   gem 'capistrano3-unicorn'
-end
-), before: 'group :development, :test do'
+), after: 'group :development, :test do'
 
 # set config/application.rb
 application  do
