@@ -4,6 +4,7 @@ require 'spec_helper'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'shoulda-matchers'
+require 'email_spec'
 require 'capybara'
 require 'capybara/rails'
 require 'capybara/rspec'

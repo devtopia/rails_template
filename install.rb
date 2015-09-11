@@ -113,6 +113,8 @@ insert_into_file 'Gemfile', %(
   # Test feature
   gem 'capybara'
   gem 'poltergeist'
+  # Email Spec
+  gem 'email_spec'
   # Deploy
   gem 'capistrano', '~> 3.2.1'
   gem 'capistrano-rails'
