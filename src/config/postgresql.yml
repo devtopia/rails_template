@@ -2,8 +2,8 @@ default: &default
   adapter: postgresql
   encoding: unicode
   pool: 5
-  username: vagrant
-  password: vagrant
+  username: foo
+  password: bar
   template: template2
 
 development:
