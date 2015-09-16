@@ -2,8 +2,9 @@ default: &default
   adapter: postgresql
   encoding: unicode
   pool: 5
-  username: devnote
-  template: template1
+  username: vagrant
+  password: vagrant
+  template: template2
 
 development:
   <<: *default
@@ -16,11 +17,9 @@ test:
 production:
   <<: *default
   database: APPNAME
-  username: devnote
-  password: devnote
   host: 192.168.33.30
   port: 9999
-  template: template1
+  template: template2
 
 ora:
   adapter: oracle_enhanced
