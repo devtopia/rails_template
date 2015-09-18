@@ -159,8 +159,8 @@ insert_into_file 'config/routes.rb', %(
   end), after: 'Rails.application.routes.draw do'
 
 # set config/environments/development.rb
-development_ip = ask("Please enter your ip address and port of development's environment")
-environment "config.action_mailer.default_url_options = {host: '#{development_ip}'}", env: 'development'
+port = ask("Please enter your port of development's environment(employee number)")
+environment "config.action_mailer.default_url_options = {host: 'localhost:#{port}'}", env: 'development'
 environment 'config.action_mailer.delivery_method = :letter_opener_web', env: 'development'
 
 # set env
