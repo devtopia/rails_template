@@ -159,6 +159,8 @@ insert_into_file 'config/routes.rb', %(
   end), after: 'Rails.application.routes.draw do'
 
 # set config/environments/development.rb
+development_ip = ask("Please enter your ip address and port of development's environment")
+environment "config.action_mailer.default_url_options = {host: '#{development_ip}'}", env: 'development'
 environment 'config.action_mailer.delivery_method = :letter_opener_web', env: 'development'
 
 # set env
@@ -201,6 +203,8 @@ end
 
 # For Bullet (N+1 Problem)
 insert_into_file 'config/environments/development.rb',%(
+  # better errors
+  BetterErrors::Middleware.allow_ip! ENV['TRUSTED_IP'] if ENV['TRUSTED_IP']
   # Bulletの設定
   config.after_initialize do
     Bullet.enable = true # Bulletプラグインを有効
