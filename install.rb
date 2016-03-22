@@ -34,7 +34,7 @@ insert_into_file 'Gemfile', %(
 # Memcached Client
 gem 'dalli'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-gem 'therubyracer', platforms: :ruby
+# gem 'therubyracer', platforms: :ruby
 # App Server
 gem 'unicorn'
 # Assets Log Cleaner
@@ -87,6 +87,8 @@ insert_into_file 'Gemfile', %(
   gem 'annotate'
   # Bower on Rails
   gem 'bower-rails'
+  # Code Convention
+  gem 'rubocop'
 ), after: 'group :development do'
 
 insert_into_file 'Gemfile', %(
@@ -102,7 +104,7 @@ insert_into_file 'Gemfile', %(
   gem 'awesome_print'
   # Rspec
   gem 'rspec-rails'
-  # test fixture
+  # Test fixture
   gem 'factory_girl_rails'
   # テスト環境のテーブルをきれいにする
   gem 'database_rewinder'
@@ -113,8 +115,11 @@ insert_into_file 'Gemfile', %(
   # Test feature
   gem 'capybara'
   gem 'poltergeist'
+  # Test javascript
+  gem 'jasmine-rails'
   # Email Spec
   gem 'email_spec'
+  # 
   # Deploy
   gem 'capistrano', '~> 3.2.1'
   gem 'capistrano-rails'
@@ -349,6 +354,8 @@ generate 'rspec:install'
 run "echo '--color -f d' > .rspec"
 remove_file 'spec/rails_helper.rb'
 run 'wget https://raw.githubusercontent.com/park-jh/templates/master/src/spec/rails_helper.rb -P spec/'
+
+generate 'jasmine_rails:install'
 
 if @use_turbolinks
   # application.js(turbolink setting)
